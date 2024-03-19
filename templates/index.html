@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1d3c1d; /* dark green color */
+            color: #f5f5dc; /* creamish white color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Patrick Hand', cursive;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #f5f5dc;
+            color: #333;
+            cursor: pointer;
+            font-family: 'Patrick Hand', cursive;
+        }
+        img {
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <form action="/" method="POST">
+        <h1>Image Generator</h1>
+        <label for="prompt">Enter Prompt:</label><br>
+        <input type="text" id="prompt" name="prompt"><br>
+        <button type="submit">Generate Image</button>
+    </form>
+
+    <!-- Display loading message -->
+    {% if loading_message %}
+    <p>{{ loading_message }}</p>
+    {% endif %}
+
+    <!-- Display the generated image if available -->
+    {% if image_path %}
+    <h2>Generated Image:</h2>
+    <img src="{{ url_for('static', filename=image_path) }}" alt="Generated Image">
+    {% endif %}
+</body>
+</html>
