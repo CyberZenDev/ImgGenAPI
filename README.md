@@ -1,4 +1,4 @@
-ImgGenAPI
+ # ImgGenAPI
 Getting Started
 To use this project, follow these steps:
 1. Clone the repository:
